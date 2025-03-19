@@ -46,7 +46,7 @@ Ref Link - [﻿projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://p
 
 In comparison to functional components, **Class Components** are more complex. To develop class-based components in React, we can use **JavaScript ES6 classes**. 
 
-**Class Components** must have a render method that returns a React element by extending from **React.Component. **
+**Class Components** must have a render method that returns a React element by extending from **React.Component.**
 
 ## Hooks
 - Introduced in React 16.8
