@@ -52,5 +52,12 @@ In comparison to functional components, **Class Components** are more complex. T
 - Introduced in React 16.8
 - useState, useEffect, useMemo, , useLayoutEffect
 
+### Key points:
+    - useRef is essential for storing previous values of props and state or react element.
+    - useEffect is the workhorse of functional lifecycles.
+    - useMemo is used for performance optimization.
+    - useLayoutEffect is used to get dom information before the browser paints.
+    - useState is used to manage state.
+
 
 
