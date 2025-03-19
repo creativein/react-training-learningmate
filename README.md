@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# React + Redux Training
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Learning Objectives
+- Master React component lifecycle.
+- Implement state management using Redux or Context API.
+- Utilize React Hooks effectively.
+- Redux Toolkit 
+## What is React ?
+- React is a JavaScript library for building user interfaces (UIs). 
+- Focuses on creating reusable UI components. 
+- Uses a **declarative** approach, meaning you describe _what_ you want the UI to look like, and React handles **_how  _**to achieve it. 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image.png](https://eraser.imgix.net/workspaces/Ax4EcPmaWvtDzZWaIT4e/LdhcCiEaS0g94a1cXU52xt8E1KE3/DPsoqozjpPFab8XOqOQUG.png?ixlib=js-3.7.0 "image.png")
 
-## Expanding the ESLint configuration
+## Key Concepts
+### Component
+- It is small reusable function which generates JSX.
+- Building blocks of React applications. They encapsulate UI elements and logic.
+### JSX (JavaScript XML)
+- A syntax extension that allows you to write HTML-like structures within JavaScript code.
+### Virtual DOM
+- A lightweight copy of the actual DOM. React uses it to efficiently update the UI.
+### Props (Properties)
+- Data passed from parent components to child components.
+- It is always **Read-Only Data**
+### State
+- Data managed within a component that can change over time. (**Mutable** in nature)
+## Lifecycle of Component
+It consist of 3 stages 
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Initialization
+2. Mounting
+3. Updation
+4. Unmounting
+Ref Link - [﻿projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) 
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![image.png](https://eraser.imgix.net/workspaces/Ax4EcPmaWvtDzZWaIT4e/LdhcCiEaS0g94a1cXU52xt8E1KE3/mxjUfPSQXrdNb64RUHzkX.png?ixlib=js-3.7.0 "image.png")
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Difference b/w Class & Functional Component
+
+
+**Function components** are a means to create components in React that do not have their state and only return JSX.
+
+In comparison to functional components, **Class Components** are more complex. To develop class-based components in React, we can use **JavaScript ES6 classes**. 
+
+**Class Components** must have a render method that returns a React element by extending from **React.Component. **
+
+## Hooks
+- Introduced in React 16.8
+- useState, useEffect, useMemo, , useLayoutEffect
+
+
+
