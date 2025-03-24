@@ -7,13 +7,13 @@ import ColorMe from "./day_one/ColorMe";
 function App() {
   return (
     <div className="App">
-      <div>
+      {/* <div>
         <h2>Understanding React Component Lifecycle</h2>
         <ClassComponent />
         <FunComponent number={1} />
       </div>
 
-      <ColorMe/>
+      <ColorMe/> */}
     </div>
   );
 }

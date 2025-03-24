@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import Button from "./Button";
-import ColorDropDown from "./ColorDropdown";
+import ColorDropDown from "./ColorDropDown";
 
 const ColorMe: FunctionComponent = () => {
   const [color, setColor] = useState("red");
