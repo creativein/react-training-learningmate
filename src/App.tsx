@@ -1,19 +1,51 @@
 import "./App.css";
-import ClassComponent from "./components/class-component";
-import FunComponent from "./components/fun-component";
-import ColorMe from "./day_one/ColorMe";
+
+import { CatList } from "./components/cat-list";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import { persistQueryClient, PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { QueryClient } from "@tanstack/react-query";
+
+const localStoragePersister = createSyncStoragePersister({
+  storage: window.localStorage,
+});
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      gcTime: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  },
+});
 
 
 function App() {
   return (
     <div className="App">
-      {/* <div>
-        <h2>Understanding React Component Lifecycle</h2>
-        <ClassComponent />
-        <FunComponent number={1} />
-      </div>
+      {/* Use Reducer */}
+      {/* <ShoppingCart/> */}
 
-      <ColorMe/> */}
+      {/* Redux Implementation     */}
+      {/* <Provider store={store}>
+        <ShoppingCartRedux />
+
+        <MyCart/>
+      </Provider> */}
+      {/* <QueryClientProvider client={new QueryClient()}>
+        <CatList />
+      </QueryClientProvider> */}
+      <PersistQueryClientProvider
+        client={queryClient}
+        persistOptions={{ persister: localStoragePersister }}
+      >
+        <CatList />
+      </PersistQueryClientProvider>
+      {/* <PetList /> */}
+      {/* <ShoppingCart/> */}
+      {/* <ClassComponent/> */}
+      {/* <FunComponent/> */}
+      {/* <ColorMe/> */}
     </div>
   );
 }
