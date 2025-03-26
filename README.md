@@ -213,3 +213,50 @@ So, just because staleTime has passed, a network request won't happen unless one
 ```
 
 Reference - https://www.youtube.com/watch?v=mPaCnwpFvZY
+
+
+Other Use Cases
+
+- useSuspenseQuery
+- useQueries
+
+
+### RTK Query  (Redux Toolkit Query) Overview
+
+- **Part of Redux Toolkit**: RTK Query is included in the Redux Toolkit package, providing an integrated solution for data fetching within Redux applications.
+
+- **Purpose**: It aims to simplify data fetching, caching, and updating in Redux, reducing boilerplate code and improving maintainability.
+
+- **Declarative API**: Uses a declarative approach to define API endpoints and data fetching logic.
+
+- **Automatic Caching**: Handles caching, invalidation, and background updates automatically.
+
+- **Redux Integration**: Leverages Redux for state management, making it well-suited for applications that already use Redux.
+
+
+### Key Differences from TanStack Query
+
+- **Redux Integration**: RTK Query is tightly integrated with Redux, making it a natural fit for Redux-based applications. 
+**TanStack Query** is framework agnostic, but often used with react.
+
+- **State Management**: RTK Query relies on Redux for state management, while TanStack Query manages its own internal cache.
+
+- **API Definition**: RTK Query uses `createApi` to define API endpoints, while TanStack Query uses `useQuery` and `useMutation` hooks.
+
+- **Boilerplate**: RTK Query can reduce Redux-related boilerplate by handling data fetching and caching within the Redux store.
+
+- **Tag invalidation**: RTK Query uses tag invalidation, which is a very powerful way to manage cache invalidation.
+
+### When to Use RTK Query
+
+- When you're already using Redux in your application.
+- When you want a tightly integrated solution for data fetching and state management.
+- When you want to reduce Redux-related boilerplate.
+- When you want to use the tag invalidation system.
+
+### When to Use TanStack Query
+
+- When you want a framework-agnostic data fetching library.
+- When you prefer a more flexible and customizable solution.
+- When you don't need Redux for state management.
+- When you want very fine grained control over the caching.
