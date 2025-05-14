@@ -260,3 +260,25 @@ Other Use Cases
 - When you prefer a more flexible and customizable solution.
 - When you don't need Redux for state management.
 - When you want very fine grained control over the caching.
+
+## Kubernetes 
+
+ ### Good Practices for Deleting Kubernetes Resources
+
+ - Understand Dependencies: Before deleting a resource, especially a pod, understand what created and is managing it. If your pod was created by a Deployment, ReplicaSet, StatefulSet, or DaemonSet, simply deleting the pod manually will likely result in the controller creating a new one to maintain the desired replica count. In such cases, you should delete the controller resource (e.g., the Deployment) which will, in turn, terminate and remove the pods it manages. Since you mentioned you only have a pod and a service directly in the namespace (implying the pod might not be managed by a controller), the direct deletion commands above should work as expected.
+
+- Use --dry-run: For critical deletions or when you are unsure about the impact, use the --dry-run=client or --dry-run=server flag to see what resources would be deleted without actually deleting them.
+
+```Bash
+kubectl delete service <your_service_name> -n default --dry-run=client
+kubectl delete pod <your_pod_name> -n default --dry-run=client
+```
+
+- Specify Namespace: Always explicitly specify the namespace using -n <namespace> to avoid accidentally deleting resources in the wrong namespace.
+
+- Graceful Termination: Kubernetes attempts graceful termination of pods by sending a SIGTERM signal, allowing the application running in the pod to shut down cleanly before sending a SIGKILL after a grace period (default is 30 seconds). Ensure your application is designed to handle the SIGTERM signal for a smooth shutdown.
+
+- Check Status After Deletion: After running the delete commands, you can verify that the resources are gone by using kubectl get pods -n default and kubectl get services -n default.
+Consider Cascading Deletion: When deleting controller resources (like Deployments), the default behavior is often cascading deletion, where dependent resources (like pods) are also deleted. Be aware of this behavior. You can control this using the --cascade flag (e.g., --cascade=orphan to leave dependents behind, though this is less common). For your simple case of deleting a standalone pod and service, cascading deletion isn't a primary concern related to these specific resources deleting each other, but it's a key concept for more complex application structures.
+
+- Backup (if necessary): If the pod or service is associated with any persistent data or critical configuration, ensure you have backups or snapshots before deletion, although for a simple pod and LoadBalancer service, this is less likely to be a concern unless the pod is writing to persistent storage.
